@@ -1,6 +1,7 @@
 package com.malapronta.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -28,10 +29,9 @@ public class Estado implements Serializable{
 	private String nome;
 
 	@JsonIgnore
-	@OneToMany(mappedBy="ESTADO")
-	private List<Cidade> cidades;
+	@OneToMany(mappedBy="estado")
+	private List<Cidade> cidades = new ArrayList<>();
 	
-	@Column(name = "PAIS")
 	@ManyToOne
 	@JoinColumn(name="PAIS_ID")
 	private Pais pais;
