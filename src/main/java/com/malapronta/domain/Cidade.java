@@ -2,13 +2,10 @@ package com.malapronta.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Cidade implements Serializable {
@@ -17,21 +14,15 @@ public class Cidade implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
 	private Integer id;
 
-	@Column(name = "NOME")
 	private String nome;
 
-	@ManyToOne
-	@JoinColumn(name="estado_id")
-	private Estado estado;
+	private String estado;
 
-	@ManyToOne
-	@JoinColumn(name = "PAIS_ID")
-	private Pais pais;
+	private String pais;
 
-	public Cidade(Integer id, String nome, Estado estado, Pais pais) {
+	public Cidade(Integer id, String nome, String estado, String pais) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -39,11 +30,15 @@ public class Cidade implements Serializable {
 		this.pais = pais;
 	}
 
-	public Pais getPais() {
+	public Cidade() {
+		super();
+	}
+
+	public String getPais() {
 		return pais;
 	}
 
-	public void setPais(Pais pais) {
+	public void setPais(String pais) {
 		this.pais = pais;
 	}
 
@@ -63,11 +58,11 @@ public class Cidade implements Serializable {
 		this.nome = nome;
 	}
 
-	public Estado getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Estado estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
